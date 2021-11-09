@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    public function schedule(){
+        return $this->belongsTo(Shecule::class);
+    }
+
+    public function teacher(){
+        return $this->hasMany(Teacher::class);
+    }
 }
