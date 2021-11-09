@@ -2,7 +2,7 @@
 
     <x-dashboard>
 
-        @livewire('teacher')
+        @livewire('course')
 
     </x-dashboard>
 
