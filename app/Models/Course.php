@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
 
     public function schedule(){
-        return $this->belongsTo(Shecule::class);
+        return $this->belongsTo(Schedule::class);
     }
 
     public function teacher(){

@@ -18,15 +18,15 @@ class DashboardRedirect
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->user_type == 'Student') {
-            return redirect('student');
+            return redirect()->route('dashboard.student');
         }
 
         if (Auth::user()->user_type == 'Teacher') {
-            return redirect('teacher');
+            return redirect()->route('dashboard.teacher');
         }
 
         if (Auth::user()->user_type == 'Admin') {
-            return redirect('dashboard');
+            return redirect()->route('dashboard');
         }
 
         return $next($request);

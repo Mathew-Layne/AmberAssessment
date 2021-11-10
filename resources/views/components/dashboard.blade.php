@@ -8,26 +8,22 @@
                 class="fixed z-30 inset-y-0 left-0 w-60 transition duration-300 transform bg-indigo-600 dark:bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
                 <div class="flex items-center justify-center mt-10">
                     <div class="w-4/6 flex items-center">
-                        <a href="{{ url('/') }}"><img src="{{ url('https://logo-maker-api.s3.us-west-2.amazonaws.com/projects/618a9a77b4337f0c5e585d61/thumbnail.png?AWSAccessKeyId=AKIA6LFXYJ6BXG4EKM6A&Expires=1636560128&Signature=objJ%2FKxgPbYsflJkhAIsJW%2FduVQ%3D') }}" alt=""></a>
+                        <a href="{{ url('/') }}"><img src="{{ url('https://logo-maker-api.s3.us-west-2.amazonaws.com/projects/618a9a77b4337f0c5e585d61/thumbnail.png?AWSAccessKeyId=AKIA6LFXYJ6BXG4EKM6A&Expires=1636569255&Signature=BMZ9oaWFhkrK8M8oCJEtBI5jMtA%3D') }}" alt=""></a>
                     </div>
                 </div>
 
                 <nav class="flex flex-col mt-16 px-4 text-left">
-                    <a href="{{ url('dashboard') }}"
+                    <a href="{{ route('dashboard') }}"
                         class="py-2 text-sm text-gray-700 font-bold px-3 dark:text-gray-100 bg-gray-200 dark:bg-gray-800 rounded">Overview</a>
-                    <a href="{{ url('student') }}"
+                    <a href="{{ route('student') }}"
                         class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100  hover:bg-gray-200 dark:hover:bg-gray-800 active:bg-gray-200 rounded">Students</a>
-                    <a href="{{ url('subject') }}"
-                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Subjects</a>
-                    <a href="{{ url('subject/choice') }}"
-                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Subject
-                        Selection</a>
-                    <a href="{{ url('/teacher') }}"
-                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Teacher</a>
-                    <a href="{{ url('/payments') }}"
-                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Payments</a>
-                    <a href="{{ url('/transactions') }}"
-                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Transaction</a>
+                    <a href="{{ route('course') }}"
+                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Courses</a>
+                    <a href="{{ route('teacher') }}"
+                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Teachers</a>
+                    <a href="{{ url('/schedule') }}"
+                        class="mt-3 py-2 text-sm text-white font-bold px-3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Schedules</a>
+                   
                 </nav>
             </div>
 
@@ -43,7 +39,7 @@
                         </button>
 
                         <div>
-                            <h1 class="text-2xl text-gray-800 font-bold dark:text-white">Title</h1>
+                            {{-- <h1 class="text-2xl text-gray-800 font-bold dark:text-white">{{ $title }}</h1> --}}
                         </div>
                     </div>
 
@@ -59,7 +55,8 @@
                             <button @click="dropdownOpen = ! dropdownOpen"
                                 class="flex items-center space-x-2 relative focus:outline-none">
                                 <h2 class="text-gray-700 font-bold dark:text-gray-300 text-sm hidden sm:block">
-                                    Name
+                                    {{
+                                    Auth::user()->name }}
                                 </h2>
                                 <img class="h-9 w-9 rounded-full border-2 border-purple-500 object-cover"
                                     src="https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
