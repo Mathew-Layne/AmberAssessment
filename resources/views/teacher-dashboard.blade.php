@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <x-dashboard>
+    <x-dashboard user="Teacher">
 
-        
+        @livewire('teacher-dashboard')
 
     </x-dashboard>
 </x-guest-layout>

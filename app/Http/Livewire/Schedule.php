@@ -12,12 +12,14 @@ class Schedule extends Component
 
     public $addform = false;
     public $editform = false;
-    public $schedule, $scheduleId;
+    public $schedule, $scheduleId, $start_time, $end_time;
 
     public function addSchedule()
     {
         $addschedule = new ModelsSchedule();
-        $addschedule->date_time = $this->schedule;
+        $addschedule->day = $this->schedule;
+        $addschedule->start_time = $this->start_time;
+        $addschedule->end_time = $this->end_time;
         $addschedule->save();
 
         $this->addform = false;
@@ -30,7 +32,9 @@ class Schedule extends Component
         $this->editform = true;
 
         $schedule = ModelsSchedule::find($id);
-        $this->schedule = $schedule->date_time;
+        $this->schedule = $schedule->day;
+        $this->start_time = $schedule->start_time;
+        $this->end_time = $schedule->end_time;
 
         $this->scheduleId = $id;
     }
@@ -39,7 +43,9 @@ class Schedule extends Component
     {
 
         $editschedule = ModelsSchedule::find($this->scheduleId);
-        $editschedule->date_time = $this->schedule;
+        $editschedule->day = $this->schedule;
+        $editschedule->start_time = $this->start_time;
+        $editschedule->end_time = $this->end_time;
         $editschedule->save();
 
         $this->editform = false;

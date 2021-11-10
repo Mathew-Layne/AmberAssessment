@@ -47,14 +47,15 @@
                                         wire:model="schedule">
                                     <option value="">Select Schedule</option>
                                     @foreach($schedules as $schedule)
-                                        <option value="{{ $schedule->id }}">{{ $schedule->date_time }}</option>    
+                                        <option value="{{ $schedule->id }}">{{ $schedule->day }} {{ $schedule->start_time }} {{ $schedule->end_time }}</option>    
                                     @endforeach
 
                                     </select>
                                     @error('cost')<span class="text-xs text-red-600">{{
                                         $message }}</span>@enderror
                                 </div>
-                            </div>
+                            </div>                      
+                            
     
                             <div class="ml-3 mt-3">
                                 <x-table.button color="gray" class="py-2 px-4">Add Subject</x-table.button>
@@ -90,7 +91,9 @@
         <x-table.thead>
     
             <x-table.table-head>Course Name</x-table.table-head>
-            <x-table.table-head>Schedules</x-table.table-head>
+            <x-table.table-head>Scheduled Day</x-table.table-head>
+            <x-table.table-head>Start Time</x-table.table-head>
+            <x-table.table-head>End Time</x-table.table-head>
             <x-table.table-head>Actions</x-table.table-head>
     
         </x-table.thead>
@@ -98,10 +101,12 @@
             @foreach ($courses as $course)
     
             <x-table.table-row>
-                <x-table.table-data responsiveName="First Name">{{ $course->course_name }}</x-table.table-data>
-                <x-table.table-data responsiveName="Last Name">{{ $course->schedule->date_time }}</x-table.table-data>
+                <x-table.table-data responsiveName="Course Name">{{ $course->course_name }}</x-table.table-data>
+                <x-table.table-data responsiveName="Scheduled Day">{{ $course->schedule->day }}</x-table.table-data>
+                <x-table.table-data responsiveName="Start Time">{{ $course->schedule->start_time }}</x-table.table-data>
+                <x-table.table-data responsiveName="End Time">{{ $course->schedule->end_time }}</x-table.table-data>
     
-                <x-table.table-data responsiveName="Class">
+                <x-table.table-data responsiveName="Action">
                     <x-table.button wire:click="editcourse({{ $course->id }})" color="green">Edit</x-table.button>
                 </x-table.table-data>
     
@@ -155,24 +160,27 @@
                             </div>
                             
                             <div class="w-full lg:w-12/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                                        Schedules
-                                    </label>
-                                    <select
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        wire:model="schedule">
-                                        <option value="">Select Schedule</option>
-                                        @foreach($schedules as $schedule)
-                                        <option value="{{ $schedule->id }}">{{ $schedule->date_time }}</option>
-                                        @endforeach
-                            
-                                    </select>
-                                    @error('cost')<span class="text-xs text-red-600">{{
-                                        $message }}</span>@enderror
+                                
+                                <div class="w-full lg:w-12/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                            Schedules
+                                        </label>
+                                        <select
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            wire:model="schedule">
+                                            <option value="">Select Schedule</option>
+                                            @foreach($schedules as $schedule)
+                                            <option value="{{ $schedule->id }}">{{ $schedule->day }} {{ $schedule->start_time }} {{ $schedule->end_time
+                                                }}</option>
+                                            @endforeach
+                                
+                                        </select>
+                                        @error('cost')<span class="text-xs text-red-600">{{
+                                            $message }}</span>@enderror
+                                    </div>
                                 </div>
-                            </div>
-    
+                                
                             <div class="ml-3 mt-3">
                                 <x-table.button color="gray" class="py-2 px-6">Update</x-table.button>
                             </div>
