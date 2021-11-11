@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\Teacher as ModelsTeacher;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,8 @@ class Teacher extends Component
     public $addform = false;
     public $editform = false;
     public $assignform = false;
-    public $teacherName, $email, $password;
+    public $assignstudentform = false;
+    public $teacherName, $email, $student, $password;
     public $teacherId, $course;
 
     public function addTeacher()
@@ -50,6 +52,23 @@ class Teacher extends Component
     }
 
 
+    public function assignStudent($id)
+    {
+        $this->assignstudentform = true;
+        $this->teacherId = $id;
+    }
+
+    public function studentAssigned()
+    {
+        $assignStudent = new Student();
+        $assignStudent->teacher_id = $this->teacherId;
+        $assignStudent->user_id = $this->student;
+        $assignStudent->save();
+
+        $this->assignstudentform = false;
+    }
+
+
     public function editTeacher($id)
     {
 
@@ -76,12 +95,16 @@ class Teacher extends Component
         $teacherlists = User::where('id', $this->teacherId)->paginate(5);
         $courses = Course::all();
         $teacherDetails = ModelsTeacher::paginate(5);
+        $studentlist = User::where('user_type', "Student")->get();
+        $assignTeacher = ModelsTeacher::where('id', $this->teacherId)->get();
 
         return view('livewire.teacher', [
             'teachers' => $teachers,
             'teacherlists' => $teacherlists,
             'courses' => $courses,
             'teacherDetails' => $teacherDetails,
+            'studentlist' => $studentlist,
+            'assignTeacher' => $assignTeacher,
         ]);
     }
 }

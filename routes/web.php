@@ -21,6 +21,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'dashboard.redirect'])->name('dashboard');
 
+
+Route::view('/login', 'login')
+->name('login');
+
+Route::view('/register', 'register')
+    ->name('register');
+
 Route::group(['middleware'=>'auth'], function(){
 
     Route::view('/dashboard/admin', 'dashboard')

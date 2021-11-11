@@ -2,14 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Teacher;
+use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class StudentDashboard extends Component
 {
     public function render()
     {
-        $teacherDetails = Teacher::all();
+        $teacherDetails = Student::where('user_id', Auth::id())->get();
 
         return view('livewire.student-dashboard',['teacherDetails' => $teacherDetails]);
     }

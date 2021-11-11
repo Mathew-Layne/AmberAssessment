@@ -9,7 +9,7 @@
                 class="fixed z-30 inset-y-0 left-0 w-60 transition duration-300 transform bg-indigo-600 dark:bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
                 <div class="flex items-center justify-center mt-10">
                     <div class="w-4/6 flex items-center">
-                        <a href="{{ url('/') }}"><img src="{{ url('https://logo-maker-api.s3.us-west-2.amazonaws.com/projects/618a9a77b4337f0c5e585d61/thumbnail.png?AWSAccessKeyId=AKIA6LFXYJ6BXG4EKM6A&Expires=1636569255&Signature=BMZ9oaWFhkrK8M8oCJEtBI5jMtA%3D') }}" alt=""></a>
+                        <a href="{{ url('/') }}"><img src="{{ url('img/logo.png') }}" alt="Logo"></a>
                     </div>
                 </div>
 

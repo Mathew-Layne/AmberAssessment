@@ -17,15 +17,15 @@
             @foreach ($teacherDetails as $teacherDetail)
     
             <x-table.table-row>
-                <x-table.table-data responsiveName="Teacher Name">{{ $teacherDetail->user->name }}
+                <x-table.table-data responsiveName="Teacher Name">{{ $teacherDetail->teacher->user->name }}
                 </x-table.table-data>
-                <x-table.table-data responsiveName="Teacher Name">{{ $teacherDetail->course->course_name }}
+                <x-table.table-data responsiveName="Course Name">{{ $teacherDetail->teacher->course->course_name }}
                 </x-table.table-data>
-                <x-table.table-data responsiveName="Email">{{ $teacherDetail->course->schedule->day }}
+                <x-table.table-data responsiveName="Day">{{ $teacherDetail->teacher->course->schedule->day }}
                 </x-table.table-data>
-                <x-table.table-data responsiveName="Addigned Course">{{ $teacherDetail->course->schedule->start_time }}
+                <x-table.table-data responsiveName="Start Time">{{ $teacherDetail->teacher->course->schedule->start_time }}
                 </x-table.table-data>
-                <x-table.table-data responsiveName="Addigned Course">{{ $teacherDetail->course->schedule->end_time }}
+                <x-table.table-data responsiveName="End Time">{{ $teacherDetail->teacher->course->schedule->end_time }}
                 </x-table.table-data>
     
             </x-table.table-row>
